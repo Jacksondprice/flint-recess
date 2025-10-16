@@ -1,0 +1,14 @@
+name: deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: AKIA5W3NAN7NS3JOSOGT
+      AWS_SECRET_ACCESS_KEY: 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
+    steps:
+      - uses: actions/checkout@v4
+      - run: aws s3 sync ./public s3://flint-recess-site --delete
